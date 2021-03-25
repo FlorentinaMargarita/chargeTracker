@@ -11,12 +11,14 @@ export default function SessionScreen() {
   useEffect(() => {
     fetch('https://dev.powerflex.io/test-server/sessions/')
       .then((response) => response.json())
-      // console.log(response)
-      .then((json) => setData(json.map((id) => {
+      .then((json) => json.map((id) => {
         console.log(id)
+        // If there were many sessions, I would consider the load on the Server, because this sends all the requests at once.
         fetch(`https://dev.powerflex.io/test-server/sessions/${id}`)
+        .then((response) => response.json())
+        .then((event) => console.log(event.session.chart_data.actual_energy_delivered))
       }
-      )))
+      ))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
