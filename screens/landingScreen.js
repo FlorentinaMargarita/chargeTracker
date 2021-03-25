@@ -8,10 +8,10 @@ export default function LandingScreen({navigation}) {
   const goToSessionPage =()=>{navigation.navigate('SessionScreen')} ;
   return (
     <View style={styles.container}>
-        <Text>LANDING SCREEN</Text>
+      <Text>LANDING SCREEN</Text>
       <Button onPress={goToSessionPage} title="Session Screen">Session Screen</Button>
       <StatusBar style="dark" />
-    </View>
+      </View>
   );
 }
 
@@ -22,4 +22,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });

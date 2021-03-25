@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import LandingScreen from './components/landingScreen';
+import LandingScreen from './screens/landingScreen';
 import { createStackNavigator } from '@react-navigation/stack';
-import SessionScreen from './components/sessionScreen';
+import SessionScreen from './screens/sessionScreen';
 
 const Stack = createStackNavigator();
 

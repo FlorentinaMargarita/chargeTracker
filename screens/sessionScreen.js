@@ -1,6 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import Chart from '../components/chart';
+import { LineChart, Grid } from 'react-native-svg-charts'
+import 'react-native-svg';
+// import {SvgCss} from 'react-native-svg';
+ 
 
 
 export default function SessionScreen() {
@@ -24,9 +29,13 @@ export default function SessionScreen() {
   }, []);
 
   
+  const toydata = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+
   return (
     <View style={styles.container}>
         <Text>SESSION SCREEN</Text>
+        <Chart />
+
       <StatusBar style="dark" />
     </View>
   );
@@ -39,4 +48,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });
