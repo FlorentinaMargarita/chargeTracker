@@ -1,0 +1,12 @@
+{
+  "name": "chargeTracker",
+  "displayName": "chargeTracker",
+  "expo": {
+    "name": "chargeTracker",
+    "slug": "chargeTracker",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
