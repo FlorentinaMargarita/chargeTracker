@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import themeStyle from "../styles/theme.style";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import InputField from "../components/inputField";
 
 export default function PreferenceScreen() {
@@ -8,21 +8,23 @@ export default function PreferenceScreen() {
 
   return (
     <View style={styles.container}>
-       <View style={styles.divider} />
-      <InputField />
+      {/* <View style={styles.divider} /> */}
+      <InputField question={"Miles needed?"} />
       <View style={styles.divider} />
-      <InputField />
+      <InputField question={"Charge Duration?"} />
       <View style={styles.divider} />
-      <InputField />
+      <InputField question={"Make?"} />
       <View style={styles.divider} />
-      <InputField />
+      <InputField question={"Model?"} />
       <View style={styles.divider} />
-      <InputField />
+      <InputField question={"Year?"} />
       <View style={styles.divider} />
-      <InputField />
+      <InputField question={"Mileage?"} />
       <View style={styles.divider} />
-      <InputField />
-      <View style={styles.divider} />
+      <InputField question={"Battery Size?"} />
+      <View style={styles.space} >
+      <Button color={themeStyle.SECONDARY_COLOR} title="send"></Button>
+      </View>
     </View>
   );
 }
@@ -30,21 +32,31 @@ export default function PreferenceScreen() {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    // flex: 1,
     marginTop: "5%",
     backgroundColor: "#fff",
-    //  alignItems: 'center',
     justifyContent: "center",
+    marginLeft:"5%",
+    marginRight: "5%",
   },
   headline: {
     fontSize: themeStyle.FONT_SIZE_TITLE,
     color: themeStyle.PRIMARY_COLOR,
     alignItems: "center",
-    // justifyContent: 'center',
   },
 
   divider: {
-    height: "2%",
-    backgroundColor: themeStyle.PRIMARY_COLOR,
+    marginTop: 5,
+    marginVertical: 1,
+    borderBottomColor: themeStyle.PRIMARY_COLOR,
+    borderBottomWidth: 5,
+  },
+  space: {
+    marginTop:'5%',
+    marginLeft:"10%",
+    marginRight: "10%",
+    // width: '5%',
+    // backgroundColor: 'red',
+    // borderBottomWidth: 5,
+    // marginVertical: '5%',
   },
 });
