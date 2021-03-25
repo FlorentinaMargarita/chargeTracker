@@ -12,8 +12,7 @@ export default function LandingScreen({navigation}) {
   const goToPreferencePage = () => {navigation.navigate('PreferenceScreen')} ;
   return (
     <View style={styles.container}>
-      <Text style={styles.headline}>LANDING SCREEN</Text>
-  
+      <Text style={styles.headline}>This is your Charge Tracker</Text>
       <View style={styles.buttonContainer}>
       <Button color={themeStyle.SECONDARY_COLOR} onPress={goToSessionPage} title="Session Screen">Session Screen</Button>
       <Divider />
@@ -34,6 +33,7 @@ const styles = StyleSheet.create({
   headline: {
     fontSize: themeStyle.FONT_SIZE_TITLE,
     color: themeStyle.PRIMARY_COLOR,
+    textAlignVertical: 'center',
   },
   buttonContainer:{
     backgroundColor: 'red',
