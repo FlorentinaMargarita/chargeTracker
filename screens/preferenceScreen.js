@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import themeStyle from "../styles/theme.style";
-import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import InputField from "../components/inputField";
 
 export default function PreferenceScreen() {
@@ -8,7 +8,6 @@ export default function PreferenceScreen() {
 
   return (
     <View style={styles.container}>
-      {/* <View style={styles.divider} /> */}
       <InputField question={"Miles needed?"} />
       <View style={styles.divider} />
       <InputField question={"Charge Duration?"} />
@@ -22,11 +21,9 @@ export default function PreferenceScreen() {
       <InputField question={"Mileage?"} />
       <View style={styles.divider} />
       <InputField question={"Battery Size?"} />
-      {/* <View style={styles.space} > */}
-      <TouchableOpacity onPress={()=>{}}  style={styles.space}>
-        <Text> Send</Text>
+      <TouchableOpacity onPress={()=>{}}  style={styles.touchable}>
+        <Text style={styles.text}> Send</Text>
       </TouchableOpacity>
-      {/* </View> */}
     </View>
   );
 }
@@ -34,33 +31,30 @@ export default function PreferenceScreen() {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    marginTop: "5%",
     backgroundColor: "#fff",
-    justifyContent: "center",
+    justifyContent: "space-around",
     marginLeft:"5%",
     marginRight: "5%",
   },
-  headline: {
-    fontSize: themeStyle.FONT_SIZE_TITLE,
-    color: themeStyle.PRIMARY_COLOR,
-    alignItems: "center",
-  },
 
   divider: {
-    marginBottom: 5,
+    marginBottom: '1%',
     marginVertical: 1,
     borderBottomColor: themeStyle.PRIMARY_COLOR,
     borderBottomWidth: 5,
   },
-  space: {
-    // marginTop:'5%',
-    marginLeft:"20%",
-    marginRight: "20%",
+  touchable: {
+   marginTop:'5%',
     borderRadius: 50,
-    // width: '5%',
-    backgroundColor: themeStyle.SECONDARY_COLOR
-    // backgroundColor: 'red',
-    // borderBottomWidth: 5,
-    // marginVertical: '5%',
+    alignSelf: 'center',
+    width: '50%',
+    height: '5%',
+    backgroundColor: themeStyle.SECONDARY_COLOR,
+    justifyContent: 'center',
   },
+  text: {
+     alignSelf: 'center',
+     justifyContent: 'center',
+     color: 'white',
+   },
 });
