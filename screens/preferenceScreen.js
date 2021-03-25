@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import themeStyle from "../styles/theme.style";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import InputField from "../components/inputField";
 
 export default function PreferenceScreen() {
@@ -22,9 +22,11 @@ export default function PreferenceScreen() {
       <InputField question={"Mileage?"} />
       <View style={styles.divider} />
       <InputField question={"Battery Size?"} />
-      <View style={styles.space} >
-      <Button color={themeStyle.SECONDARY_COLOR} title="send"></Button>
-      </View>
+      {/* <View style={styles.space} > */}
+      <TouchableOpacity onPress={()=>{}}  style={styles.space}>
+        <Text> Send</Text>
+      </TouchableOpacity>
+      {/* </View> */}
     </View>
   );
 }
@@ -45,16 +47,18 @@ const styles = StyleSheet.create({
   },
 
   divider: {
-    marginTop: 5,
+    marginBottom: 5,
     marginVertical: 1,
     borderBottomColor: themeStyle.PRIMARY_COLOR,
     borderBottomWidth: 5,
   },
   space: {
-    marginTop:'5%',
-    marginLeft:"10%",
-    marginRight: "10%",
+    // marginTop:'5%',
+    marginLeft:"20%",
+    marginRight: "20%",
+    borderRadius: 50,
     // width: '5%',
+    backgroundColor: themeStyle.SECONDARY_COLOR
     // backgroundColor: 'red',
     // borderBottomWidth: 5,
     // marginVertical: '5%',
