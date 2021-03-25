@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import themeStyle from "../styles/theme.style";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import InputField from "../components/inputField";
+import Divider from "../components/divider";
 
 export default function PreferenceScreen() {
   //maybe I could do it with drop down menue that would be easier for the database to handle.
@@ -9,17 +10,17 @@ export default function PreferenceScreen() {
   return (
     <View style={styles.container}>
       <InputField question={"Miles needed?"} />
-      <View style={styles.divider} />
+   <Divider />
       <InputField question={"Charge Duration?"} />
-      <View style={styles.divider} />
+      <Divider />
       <InputField question={"Make?"} />
-      <View style={styles.divider} />
+      <Divider />
       <InputField question={"Model?"} />
-      <View style={styles.divider} />
+      <Divider />
       <InputField question={"Year?"} />
-      <View style={styles.divider} />
+      <Divider />
       <InputField question={"Mileage?"} />
-      <View style={styles.divider} />
+      <Divider />
       <InputField question={"Battery Size?"} />
       <TouchableOpacity onPress={()=>{}}  style={styles.touchable}>
         <Text style={styles.text}> Send</Text>
@@ -37,12 +38,6 @@ const styles = StyleSheet.create({
     marginRight: "5%",
   },
 
-  divider: {
-    marginBottom: '1%',
-    marginVertical: 1,
-    borderBottomColor: themeStyle.PRIMARY_COLOR,
-    borderBottomWidth: 5,
-  },
   touchable: {
    marginTop:'5%',
     borderRadius: 50,

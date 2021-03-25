@@ -5,6 +5,7 @@ import PreferenceScreen from './screens/preferenceScreen';
 import SessionScreen from './screens/sessionScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import themeStyle from './styles/theme.style';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +21,7 @@ export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
     <Stack.Navigator>
-        <Stack.Screen name="LandingScreen" component={LandingScreen} />
+        <Stack.Screen  options={{ title: 'Welcome To PowerFlex', headerTintColor: themeStyle.PRIMARY_COLOR }}name="LandingScreen" component={LandingScreen} />
         <Stack.Screen name="SessionScreen" component={SessionScreen} />
         <Stack.Screen name="PreferenceScreen" component={PreferenceScreen} />
       </Stack.Navigator>

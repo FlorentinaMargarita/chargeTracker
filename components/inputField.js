@@ -25,13 +25,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   fieldContainer: {
-    // flexDirection: 'row',
-    // alignItems: 'flex-start',
-    // justifyContent: 'flex-start',
-    // backgroundColor: 'red',
-    // width: '100%',
-    // flex: 1,
-    // backgroundColor: 'red',
   },
   input: {
 fontSize: themeStyle.FONT_SIZE_LARGE,
