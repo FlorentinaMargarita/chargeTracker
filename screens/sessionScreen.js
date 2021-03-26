@@ -10,31 +10,32 @@ import themeStyle from '../styles/theme.style';
 
 export default function SessionScreen() {
 
-  const { fontFamily, fontSize } = useTheme();
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('https://dev.powerflex.io/test-server/sessions/')
-      .then((response) => response.json())
-      .then((json) => json.map((id) => {
-        console.log(id)
-        // If there were many sessions, I would consider the load on the Server, because this sends all the requests at once.
-        fetch(`https://dev.powerflex.io/test-server/sessions/${id}`)
+    // fetch('https://dev.powerflex.io/test-server/sessions/')
+    //   .then((response) => response.json())
+    //   .then((json) => json.map((id) => {
+    //     console.log(id)
+    //     fetch(`https://dev.powerflex.io/test-server/sessions/${id}`)
+    //     .then((response) => response.json())
+    //     .then((event) => setData(event.session.chart_data))
+    //   }
+    //   ))
+    //   .catch((error) => console.error(error))
+    //   .finally(() => setLoading(false));
+    fetch(`https://dev.powerflex.io/test-server/sessions/111`)
         .then((response) => response.json())
-        .then((event) => console.log(event.session.chart_data.actual_energy_delivered))
-      }
-      ))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
+        .then((event) => setData(event.session.chart_data))
+        .finally(() => setLoading(false));
   }, []);
 
 
   return (
     <View style={styles.container}>
         <Text style={styles.headline}>SESSION SCREEN</Text>
-        <Chart />
-
+        { isLoading ?  <View/>  : <Chart data={data} />}
       <StatusBar style="dark" />
     </View>
   );

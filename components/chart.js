@@ -4,49 +4,48 @@ import "react-native-svg";
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
-export default function Chart() {
-  const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80];
+export default function Chart({data}) {
+  // const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80];
   const { colors } = useTheme();
-  const contentInset = { top: 20, bottom: 20 }
+  const verticalContentInset = { top: 10, bottom: 10 }
+
+  const axesSvg = { fontSize: 10, fill: 'grey' };
+  const xAxisHeight = 30
 
   return (
-    // <View style={styles.linechart}>
     <View style={{ height: 200, padding: 20, flexDirection: 'row' }}>
       <YAxis
-        data={data}
-        // contentInset={contentInset}
-        svg={{
-          fill: "grey",
-          fontSize: 10,
-        }}
-        numberOfTicks={10}
-        formatLabel={(value) => `${value}ºC`}
+         data={data.actual_energy_delivered}
+          // .concat(data.predictive_energy_delivered)}
+         style={{ marginBottom: xAxisHeight }}
+         contentInset={verticalContentInset}
+         svg={axesSvg}
       />
           <View style={{ flex: 1, marginLeft: 10 }}>
       <LineChart
-        style={{ height: 200 }}
-        data={data}
+        style={{ flex: 1, height: 200}}
+        data={data.actual_energy_delivered}
         svg={{ stroke: colors.secondary }}
-        contentInset={{ top: 20, bottom: 20 }}
+        contentInset={verticalContentInset}
       >
         <Grid />
       </LineChart>
       <XAxis
-        style={{ marginHorizontal: -10 }}
-        data={data}
-        formatLabel={(value, index) => index}
-        contentInset={{ left: 10, right: 10 }}
-        svg={{ fontSize: 10, fill: "black" }}
+       style={{ marginHorizontal: -10, height: xAxisHeight }}
+       data={data.time}
+       formatLabel={(value, index) => index}
+       contentInset={{ left: 10, right: 10 }}
+       svg={axesSvg}
       />
     </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  linechart: {
-    marginTop: "20%",
-    marginBottom: "20%",
-    width: "70%",
-  },
-});
+// const styles = StyleSheet.create({
+//   linechart: {
+//     marginTop: "20%",
+//     marginBottom: "20%",
+//     width: "70%",
+//   },
+// });
