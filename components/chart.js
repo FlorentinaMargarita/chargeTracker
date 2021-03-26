@@ -17,11 +17,11 @@ export default function Chart({ data }) {
   const chartData = [
     {
       data: data.actual_energy_delivered,
-      svg: { stroke: "purple" },
+      svg: { stroke: themeStyle.PRIMARY_COLOR },
     },
     {
       data: data.predictive_energy_delivered,
-      svg: { stroke: "green" },
+      svg: { stroke: themeStyle.SECONDARY_COLOR },
     },
   ];
 
@@ -44,8 +44,8 @@ export default function Chart({ data }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headline}>This is data for {equalDay()}</Text>
-      <View style={{ height: "70%", paddingRight: 20, paddingLeft: 5, flexDirection: "row" }}>
+       <Text style={styles.headline}>This is data for {equalDay()}</Text>
+      <View style={{ height: "70%", paddingRight: 20, paddingLeft: 5, flexDirection: "row", marginBottom: 10 }}>
         <YAxis
           data={data.actual_energy_delivered.concat(
             data.predictive_energy_delivered
@@ -90,16 +90,21 @@ export default function Chart({ data }) {
           />
         </View>
       </View>
+      <Text style={styles.captionExplainationX}>X-Axis: Points in Time {equalDay()}</Text>
+      <Text style={styles.captionExplainationY}>Y-Axis: Energy delivered {equalDay()}</Text>
+      <Text style={styles.captionExplainationGreen}>Orange-Line: Predicted Energy {equalDay()}</Text>
+      <Text style={styles.captionExplainationGreen}>Dark-Line: Actual Energy Delivered {equalDay()}</Text>
     </View>
   );
 }
 const styles = StyleSheet.create({
  container:{
    justifyContent: 'space-around',
+   flexGrow: 1, 
  },
 
   headline: {
-    marginBottom: 10,
+    // marginBottom: 10,
     fontSize: themeStyle.FONT_SIZE_TITLE,
     color: themeStyle.PRIMARY_COLOR,
   },
