@@ -16,52 +16,77 @@ export default function PreferenceScreen() {
   const [mileage, setMileage] = useState();
   const [battery, setBattery] = useState();
 
-  fetch("https://dev.powerflex.io/test-server/preferences", {
+
+
+  const postData = () => {
+    const body = {
+      "miles_needed": miles,
+      "charge_duration": duration,
+      "make": make,
+      "model": model,
+      "year": year,
+      "mileage": mileage,
+      "battery_size": battery,
+    };
+    console.log("body", body);
+    fetch("https://dev.powerflex.io/test-server/preferences", {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      firstParam: miles,
-      secondParam: duration,
-      thirdParam: make,
-      fourthParam: model,
-      fifthParam: year,
-      sixthParam: mileage,
-      seventhParam: battery,
-    }),
+    body: JSON.stringify(body),
+
+    
+  }).then((response)=>{
+    console.log(response.ok)
+
+    
+  return response.text();
+  }
+  ).then((text)=>{
+    console.log(text, "text")
   });
+};
 
   return (
     <View style={styles.container}>
       <InputField
-        onChangeText={(text) => setMiles(text)}
+        text={miles}
+        onChangeText={(text) => setMiles(parseInt(text))}
         question={"Miles needed?"}
       />
-      {/* <Text>{miles}</Text> */}
       <Divider />
       <InputField
-        onChangeText={(text) => setDuration(text)}
+      text={duration}
+        onChangeText={(text) => setDuration(parseInt(text))}
         question={"Charge Duration?"}
       />
       <Divider />
-      <InputField onChangeText={(text) => setMake(text)} question={"Make?"} />
+      <InputField
+      text={make}
+       onChangeText={(text) => setMake(text)} question={"Make?"} />
       <Divider />
-      <InputField onChangeText={(text) => setModel(text)} question={"Model?"} />
+      <InputField 
+      text={model}
+      onChangeText={(text) => setModel(text)} question={"Model?"} />
       <Divider />
-      <InputField onChangeText={(text) => setYear(text)} question={"Year?"} />
+      <InputField 
+      text={year}
+      onChangeText={(text) => setYear(parseInt(text))} question={"Year?"} />
       <Divider />
       <InputField
-        onChangeText={(text) => setMileage(text)}
+      text={mileage}
+        onChangeText={(text) => setMileage(parseInt(text))}
         question={"Mileage?"}
       />
       <Divider />
       <InputField
-        onChangeText={(text) => setBattery(text)}
+      text={battery}
+        onChangeText={(text) => setBattery(parseInt(text))}
         question={"Battery Size?"}
       />
-      <CustomButton onPress={() => {}} buttonText="send" />
+      <CustomButton onPress={postData} buttonText="send" />
     </View>
   );
 }

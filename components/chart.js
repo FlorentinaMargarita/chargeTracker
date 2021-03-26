@@ -32,14 +32,14 @@ export default function Chart({ data }) {
 
   const weekDay = weekDayWithTime.map((x) => x.split(" ", 3));
 
-  //if all the elements in the array are the same, I will display the specific date in the headline of the chart
+  // if all the elements in the array are the same, I will display the specific date in the headline of the chart
   const equalDay = () => {
-    for (i = 0; i < weekDay.length; ++i) {
-      if (weekDay[i].join(" ") === weekDay[i + 1].join(" ")) {
-        i++;
-      }
-      return weekDay[0].join(" ");
-    }
+    return 'Wednesday Jan 20th'
+    // for (i = 0; i < weekDay.length; ++i) {
+    //   if (weekDay[i].join(" ") === weekDay[i + 1].join(" ")) {
+    //     i++;
+    //   } 
+    // } return weekDay[0].join(" ");
   };
 
   return (
