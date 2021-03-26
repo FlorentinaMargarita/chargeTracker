@@ -5,7 +5,6 @@ import Chart from '../components/chart';
 import { useTheme } from '@react-navigation/native';
 import 'react-native-svg';
 import themeStyle from '../styles/theme.style';
-import EnergyChart from '../components/energyChart';
  
 
 
@@ -34,8 +33,7 @@ export default function SessionScreen() {
   return (
     <View style={styles.container}>
         <Text style={styles.headline}>SESSION SCREEN</Text>
-        {/* <Chart /> */}
-        <EnergyChart />
+        <Chart />
 
       <StatusBar style="dark" />
     </View>
