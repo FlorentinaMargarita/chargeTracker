@@ -7,7 +7,7 @@ import themeStyle from '../styles/theme.style';
 
 export default function LandingScreen({navigation}) {
   
-  const goToSessionPage =()=>{navigation.navigate('SessionScreen')} ;
+  const goToSessionPage =()=>{navigation.navigate('SessionScreenOverview')} ;
 
   const goToPreferencePage = () => {navigation.navigate('PreferenceScreen')} ;
   return (
