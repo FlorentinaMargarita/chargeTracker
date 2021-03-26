@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Chart from "../components/chart";
-import { useTheme } from "@react-navigation/native";
 import "react-native-svg";
 import themeStyle from "../styles/theme.style";
 
@@ -31,9 +30,10 @@ export default function SessionScreen() {
       .finally(() => setLoading(false));
   }, []);
 
+
+
   return (
     <View style={styles.container}>
-      <Text style={styles.headline}>This is data for </Text>
       {isLoading ? <View /> : <Chart data={data} />}
       <StatusBar style="dark" />
     </View>
@@ -46,9 +46,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  headline: {
-    fontSize: themeStyle.FONT_SIZE_TITLE,
-    color: themeStyle.PRIMARY_COLOR,
-  },
+  }
 });
