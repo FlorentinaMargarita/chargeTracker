@@ -1,15 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import Chart from '../components/chart';
-import { useTheme } from '@react-navigation/native';
-import 'react-native-svg';
-import themeStyle from '../styles/theme.style';
- 
-
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import Chart from "../components/chart";
+import { useTheme } from "@react-navigation/native";
+import "react-native-svg";
+import themeStyle from "../styles/theme.style";
 
 export default function SessionScreen() {
-
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -26,16 +23,18 @@ export default function SessionScreen() {
     //   .catch((error) => console.error(error))
     //   .finally(() => setLoading(false));
     fetch(`https://dev.powerflex.io/test-server/sessions/111`)
-        .then((response) => response.json())
-        .then((event) => setData(event.session.chart_data))
-        .finally(() => setLoading(false));
+      .then((response) => response.json())
+      .then((event) => {
+        setData(event.session.chart_data);
+        console.log(event.session.chart_data.time);
+      })
+      .finally(() => setLoading(false));
   }, []);
-
 
   return (
     <View style={styles.container}>
-        <Text style={styles.headline}>SESSION SCREEN</Text>
-        { isLoading ?  <View/>  : <Chart data={data} />}
+      <Text style={styles.headline}>SESSION SCREEN</Text>
+      {isLoading ? <View /> : <Chart data={data} />}
       <StatusBar style="dark" />
     </View>
   );
@@ -44,14 +43,12 @@ export default function SessionScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   headline: {
     fontSize: themeStyle.FONT_SIZE_TITLE,
     color: themeStyle.PRIMARY_COLOR,
   },
-
 });
