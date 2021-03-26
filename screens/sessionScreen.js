@@ -5,27 +5,15 @@ import Chart from "../components/chart";
 import "react-native-svg";
 import themeStyle from "../styles/theme.style";
 
-export default function SessionScreen() {
+export default function SessionScreen({route}) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // fetch('https://dev.powerflex.io/test-server/sessions/')
-    //   .then((response) => response.json())
-    //   .then((json) => json.map((id) => {
-    //     console.log(id)
-    //     fetch(`https://dev.powerflex.io/test-server/sessions/${id}`)
-    //     .then((response) => response.json())
-    //     .then((event) => setData(event.session.chart_data))
-    //   }
-    //   ))
-    //   .catch((error) => console.error(error))
-    //   .finally(() => setLoading(false));
-    fetch(`https://dev.powerflex.io/test-server/sessions/111`)
+    fetch(`https://dev.powerflex.io/test-server/sessions/${route.params.paramKey}`)
       .then((response) => response.json())
       .then((event) => {
         setData(event.session.chart_data);
-        // console.log(event.session.chart_data.time);
       })
       .finally(() => setLoading(false));
   }, []);
