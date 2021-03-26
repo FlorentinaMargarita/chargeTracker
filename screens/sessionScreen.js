@@ -26,14 +26,14 @@ export default function SessionScreen() {
       .then((response) => response.json())
       .then((event) => {
         setData(event.session.chart_data);
-        console.log(event.session.chart_data.time);
+        // console.log(event.session.chart_data.time);
       })
       .finally(() => setLoading(false));
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headline}>SESSION SCREEN</Text>
+      <Text style={styles.headline}>This is data for </Text>
       {isLoading ? <View /> : <Chart data={data} />}
       <StatusBar style="dark" />
     </View>
