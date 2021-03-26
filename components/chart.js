@@ -4,13 +4,12 @@ import { LineChart, Grid, YAxis, XAxis } from "react-native-svg-charts";
 import { View, Text, StyleSheet } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import themeStyle from "../styles/theme.style";
-import { index } from "d3-array";
 
 export default function Chart({ data }) {
   const { colors } = useTheme();
   const verticalContentInset = { top: 10, bottom: 10 };
 
-  const axesSvg = { fontSize: 12, fill: "grey", height: 200 };
+  const axesSvg = { fontSize: 12, fill: "grey" };
 
   const spacingInner = 1;
   const spacingOuter = 1;
@@ -44,9 +43,9 @@ export default function Chart({ data }) {
   };
 
   return (
-    <>
+    <View style={styles.container}>
       <Text style={styles.headline}>This is data for {equalDay()}</Text>
-      <View style={{ height: "70%", padding: 20, flexDirection: "row" }}>
+      <View style={{ height: "70%", paddingRight: 20, paddingLeft: 5, flexDirection: "row" }}>
         <YAxis
           data={data.actual_energy_delivered.concat(
             data.predictive_energy_delivered
@@ -57,7 +56,7 @@ export default function Chart({ data }) {
         />
         <View style={{ flex: 1, marginLeft: 10 }}>
           <LineChart
-            style={{ flex: 1, height: 200 }}
+            style={{ flex: 1, height: 50 }}
             data={chartData}
             svg={{ stroke: colors.secondary }}
             contentInset={verticalContentInset}
@@ -66,7 +65,7 @@ export default function Chart({ data }) {
           </LineChart>
 
           <XAxis
-            style={{ marginHorizontal: -10, lineHeight: 50, height: 200 }}
+            style={{ marginHorizontal: -10, lineHeight: 50, height: 40, paddingLeft: 20 }}
             data={data.time}
             // xAccessor is a function that takes an index and returns the x value at that index
             // index is an object.
@@ -87,15 +86,20 @@ export default function Chart({ data }) {
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
             contentInset={{ left: 10, right: 10 }}
-            svg={{ ...axesSvg, rotation: 30, y: 20 }}
+            svg={{ ...axesSvg, rotation: 40, y: 25}}
           />
         </View>
       </View>
-    </>
+    </View>
   );
 }
 const styles = StyleSheet.create({
+ container:{
+   justifyContent: 'space-around',
+ },
+
   headline: {
+    marginBottom: 10,
     fontSize: themeStyle.FONT_SIZE_TITLE,
     color: themeStyle.PRIMARY_COLOR,
   },
