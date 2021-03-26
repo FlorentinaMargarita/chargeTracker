@@ -1,7 +1,7 @@
 import React from "react";
 import { LineChart, Grid, YAxis, XAxis } from "react-native-svg-charts";
 import "react-native-svg";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
 export default function Chart({ data }) {
@@ -45,6 +45,11 @@ export default function Chart({ data }) {
         <XAxis
           style={{ marginHorizontal: -10, height: xAxisHeight }}
           data={data.time}
+          // xAccessor is a function that takes an index and returns the x value at that index
+          // index is an object. 
+          xAccessor={({item}) => {
+            console.log(index, "index", data.time[index], "data.time[index]")
+            return item}}
           formatLabel={(value) => {
           console.log(value, "value"); 
           console.log(data.time, "data.time")
