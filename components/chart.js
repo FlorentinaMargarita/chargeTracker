@@ -1,9 +1,9 @@
 import React from "react";
 import "react-native-svg";
+import themeStyle from "../styles/theme.style";
 import { LineChart, Grid, YAxis, XAxis } from "react-native-svg-charts";
 import { View, Text, StyleSheet } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import themeStyle from "../styles/theme.style";
 
 export default function Chart({ data }) {
   const { colors } = useTheme();
@@ -70,8 +70,6 @@ export default function Chart({ data }) {
             // xAccessor is a function that takes an index and returns the x value at that index
             // index is an object.
             xAccessor={({ item }) => {
-              console.log("item", item);
-              console.log(data.time.length, "dataTimeLength");
               return item;
             }}
             formatLabel={(value, index) => {
@@ -92,8 +90,8 @@ export default function Chart({ data }) {
       </View>
       <Text style={styles.captionExplainationX}>X-Axis: Points in Time {equalDay()}</Text>
       <Text style={styles.captionExplainationY}>Y-Axis: Energy delivered {equalDay()}</Text>
-      <Text style={styles.captionExplainationGreen}>Orange-Line: Predicted Energy {equalDay()}</Text>
-      <Text style={styles.captionExplainationGreen}>Dark-Line: Actual Energy Delivered {equalDay()}</Text>
+      <Text style={styles.captionExplainationGreen}>Orange-Line: Actual Energy Delivered {equalDay()}</Text>
+      <Text style={styles.captionExplainationGreen}>Dark-Line: Predicted Energy {equalDay()}</Text>
     </View>
   );
 }
@@ -104,7 +102,6 @@ const styles = StyleSheet.create({
  },
 
   headline: {
-    // marginBottom: 10,
     fontSize: themeStyle.FONT_SIZE_TITLE,
     color: themeStyle.PRIMARY_COLOR,
   },
