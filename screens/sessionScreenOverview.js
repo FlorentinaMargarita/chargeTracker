@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, ActivityIndicator } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import Chart from "../components/chart";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  ActivityIndicator,
+} from "react-native";
 import "react-native-svg";
 import themeStyle from "../styles/theme.style";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
-export default function SessionScreenOverview() {
+export default function SessionScreenOverview({navigation}) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const [array, setArray] = useState([]);
 
   // useEffect(() => {
   //   fetch('https://dev.powerflex.io/test-server/sessions/')
@@ -20,49 +23,51 @@ export default function SessionScreenOverview() {
   //     // }
   //     // ))
   //  }, []);
-// const ids = []
+  // const ids = []
 
-useEffect(() => {
-fetch('https://dev.powerflex.io/test-server/sessions/')
-  // .then(console.log(response, "response"))
-  .then((response) => response.json())
-  .then((json) => setData(json))
-  .catch((error)=> alert(error))
-  .finally(setLoading(false))
-})
+  useEffect(() => {
+    fetch("https://dev.powerflex.io/test-server/sessions/")
+      // .then(console.log(response, "response"))
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => alert(error))
+      .finally(setLoading(false));
+  });
 
-
-const getIds= () => {
-  return fetch('https://dev.powerflex.io/test-server/sessions/')
-  .then(res => res.json())
-  .then(x => console.log(x))
-}
-            
-//  console.log("ids", getIds())
-//  console.log("sessionsArray", sessionsArray)
-
-  const goToSessionPage =()=>{navigation.navigate('SessionScreen')} ;
-
-
+  // const getIds = () => {
+  //   return fetch("https://dev.powerflex.io/test-server/sessions/")
+  //     .then((res) => res.json())
+  //     .then((x) => console.log(x));
+  // };
+  const goToSessionPage = () => {
+    navigation.navigate("SessionScreen");
+  };
 
   return (
     <View style={styles.container}>
       <View>
-      <Text > Choose a Session </Text>
+        <Text style={{color: themeStyle.FONT_WEIGHT_HEAVY, fontSize: themeStyle.FONT_SIZE_TITLE, color: themeStyle.PRIMARY_COLOR}}> Choose a Session </Text>
 
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <FlatList data={data} keyExtractor={({ id }, index)=> id}
-        renderItem={({item})=> {
-          return(
-            <Text> {item}</Text>
-          )
-        }} />)}
-        </View>
-        </View>
-
-      )
+        {isLoading ? (
+          <ActivityIndicator />
+        ) : (
+          <FlatList
+            data={data}
+            keyExtractor={({ id }, index) => id}
+            renderItem={({ item }) => {
+              return (
+                <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.touchable} onPress={goToSessionPage}>
+                  <Text style={styles.text}>{item}</Text>
+                </TouchableOpacity>
+                </View>
+              );
+            }}
+          />
+        )}
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -71,5 +76,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  }
+  },
+  buttonContainer:{
+    marginTop:'10%',
+  },
+  touchable: {
+    marginTop:'5%',
+    borderRadius: 50,
+    alignSelf: "center",
+     width: "40%",
+    backgroundColor: themeStyle.SECONDARY_COLOR,
+    justifyContent: "center",
+  },
+  text: {
+    alignSelf: "center",
+    justifyContent: "center",
+    color: "white",
+  },
 });

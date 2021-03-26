@@ -3,6 +3,7 @@ import themeStyle from "../styles/theme.style";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import InputField from "../components/inputField";
 import Divider from "../components/divider";
+import CustomButton from "../components/customButton";
 
 export default function PreferenceScreen() {
   //maybe I could do it with drop down menue that would be easier for the database to handle.
@@ -22,9 +23,7 @@ export default function PreferenceScreen() {
       <InputField question={"Mileage?"} />
       <Divider />
       <InputField question={"Battery Size?"} />
-      <TouchableOpacity onPress={()=>{}}  style={styles.touchable}>
-        <Text style={styles.text}> Send</Text>
-      </TouchableOpacity>
+      <CustomButton onPress={()=>{}} buttonText="send" />
     </View>
   );
 }
@@ -37,19 +36,4 @@ const styles = StyleSheet.create({
     marginLeft:"5%",
     marginRight: "5%",
   },
-
-  touchable: {
-   marginTop:'5%',
-    borderRadius: 50,
-    alignSelf: 'center',
-    width: '50%',
-    height: '5%',
-    backgroundColor: themeStyle.SECONDARY_COLOR,
-    justifyContent: 'center',
-  },
-  text: {
-     alignSelf: 'center',
-     justifyContent: 'center',
-     color: 'white',
-   },
 });
