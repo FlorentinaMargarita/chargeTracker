@@ -1,5 +1,5 @@
 import React from "react";
-import {G} from "react-native-svg";
+import { G } from "react-native-svg";
 import themeStyle from "../styles/theme.style";
 import { LineChart, Grid, YAxis, XAxis } from "react-native-svg-charts";
 import { View, Text, StyleSheet } from "react-native";
@@ -33,19 +33,27 @@ export default function Chart({ data }) {
   const weekDay = weekDayWithTime.map((x) => x.split(" ", 3));
 
   // if all the elements in the array are the same, I will display the specific date in the headline of the chart
+  //equalDay returns a boolean to control header and X-Axis.
   const equalDay = () => {
-    return "Wed. Jan 20th";
-    // for (i = 0; i < weekDay.length; ++i) {
-    //   if (weekDay[i].join(" ") === weekDay[i + 1].join(" ")) {
-    //     i++;
-    //   }
-    // } return weekDay[0].join(" ");
+    for (i = 0; i < weekDay.length - 1; ++i) {
+      if (weekDay[i].join(" ") !== weekDay[i + 1].join(" ")) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const displayDay = () => {
+    if (equalDay() === true) {
+      return weekDay[0].join(" ");
+    } else return "Data for many Days";
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headline}>Data for {equalDay()}</Text>
-      <View        style={styles.chartView}      >
+      <Text style={styles.headline}>Data for {displayDay()}</Text>
+      <View style={styles.chartView}>
+        {/* Concatenate the data arrays actual energy and predictive energy so that the Y-Axis sees all the data points. */}
         <YAxis
           data={data.actual_energy_delivered.concat(
             data.predictive_energy_delivered
@@ -56,25 +64,24 @@ export default function Chart({ data }) {
           min={0}
         />
         <View style={{ flex: 1, marginLeft: 10 }}>
-          {/* <G> */}
           <LineChart
             style={{ flex: 1, height: 50 }}
             data={chartData}
             svg={{ stroke: colors.secondary }}
             contentInset={verticalContentInset}
-            renderGrid={ Grid.Both }
+            renderGrid={Grid.Both}
             gridMin={0}
+            // numberOfTicks={5}
           >
-            <Grid direction={Grid.Direction.BOTH}/>
-            {/* renderGrid={ Grid.Both } */}
+            <Grid direction={Grid.Direction.BOTH} />
           </LineChart>
-          {/* </G> */}
           <XAxis
             style={{
-              marginHorizontal: -10,
+              marginHorizontal: -50,
               lineHeight: 50,
-              height: 40,
+              height: 10,
               paddingLeft: 20,
+              backgroundColor: "red",
             }}
             data={data.time}
             // xAccessor is a function that takes an index and returns the x value at that index
@@ -87,30 +94,31 @@ export default function Chart({ data }) {
               const newDate = new Date(value * 1000).toLocaleString();
               const makeArray = newDate.split(" ");
               const getJustTime = makeArray[3];
+              console.log(getJustTime, "value");
               //returns the data for the odd indexes. So only 10 instead of 20.
               if (index % 2) return getJustTime;
-              else return "";
+              else return "abc";
             }}
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
-            // contentInset={{ left: 10, right: 10 }}
-            svg={{ ...axesSvg, rotation: 50, y: 25 }}
+            contentInset={{ left: 60, right: 30 }}
+            svg={{ ...axesSvg, rotation: 50, y: 50 }}
           />
         </View>
       </View>
-      <View style={{marginLeft: 15}} >
-      <Text style={styles.captionExplainationX}>
-        X-Axis: Points in Time {equalDay()}
-      </Text>
-      <Text style={styles.captionExplainationY}>
-        Y-Axis: Energy delivered {equalDay()}
-      </Text>
-      <Text style={styles.captionExplainationGreen}>
-        Orange-Line: Predicted Energy {equalDay()}
-      </Text>
-      <Text style={styles.captionExplainationGreen}>
-        Dark-Line: Actual Energy {equalDay()}
-      </Text>
+      <View style={{ marginLeft: 15 }}>
+        <Text style={styles.captionExplainationX}>
+          X-Axis: Points in Time {displayDay()}
+        </Text>
+        <Text style={styles.captionExplainationY}>
+          Y-Axis: Energy delivered {displayDay()}
+        </Text>
+        <Text style={styles.captionExplainationGreen}>
+          Orange-Line: Predicted Energy {displayDay()}
+        </Text>
+        <Text style={styles.captionExplainationGreen}>
+          Dark-Line: Actual Energy {displayDay()}
+        </Text>
       </View>
     </View>
   );
@@ -118,7 +126,7 @@ export default function Chart({ data }) {
 const styles = StyleSheet.create({
   container: {
     justifyContent: "space-around",
-    paddingBottom: 5, 
+    paddingBottom: 5,
   },
 
   headline: {
@@ -126,10 +134,10 @@ const styles = StyleSheet.create({
     color: themeStyle.PRIMARY_COLOR,
     textAlign: "center",
   },
-  chartView:{
-  height: "70%",
-  width: "95%",
-  flexDirection: "row",
-  marginBottom: 10,},
-  
+  chartView: {
+    height: "60%",
+    width: "95%",
+    flexDirection: "row",
+    marginBottom: "10%",
+  },
 });
