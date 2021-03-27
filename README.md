@@ -37,7 +37,7 @@ The app has 4 different screens:
          
         3.)	time
 
-To display the chart I am using the library: react-native-svg-charts (https://github.com/JesperLekland/react-native-svg-charts) In order to be able to use it, another library has to be installed: react-native-svg (https://github.com/react-native-svg/react-native-svg). For the markers on the Y-axis I concatenated the data of predictive energy delivered with actual energy delivered. The line chart does then display these two data sets over time. The X-Axis shows the points in time, when the energy was delivered. For better readability I decided not to show every time point, but rather only every second point in time. 
+ To display the chart I am using the library: react-native-svg-charts (https://github.com/JesperLekland/react-native-svg-charts) In order to be able to use it, another library has to be installed: react-native-svg (https://github.com/react-native-svg/react-native-svg). For the markers on the Y-axis I concatenated the data of predictive energy delivered with actual energy delivered. The line chart does then display these two data sets over time. The X-Axis shows the points in time, when the energy was delivered. For better readability I decided not to show every time point, but rather only every second point in time. 
 
 
 
