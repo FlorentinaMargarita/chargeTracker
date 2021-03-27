@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import themeStyle from "../styles/theme.style";
 
-export default function InputField({ question, onChangeText, text }) {
+export default function InputField({ question, onChangeText, text, keyboardType }) {
   return (
     <View style={styles.subContainer}>
       <Text style={styles.question}> {question}</Text>
@@ -14,6 +14,7 @@ export default function InputField({ question, onChangeText, text }) {
           style={styles.input}
           onChangeText={onChangeText}
           value={text}
+          keyboardType={keyboardType}
         />
       </View>
     </View>

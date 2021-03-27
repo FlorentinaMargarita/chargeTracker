@@ -49,12 +49,14 @@ export default function PreferenceScreen() {
         text={miles}
         onChangeText={(text) => setMiles(parseInt(text))}
         question={"Miles needed?"}
+        keyboardType='numeric'
       />
       <Divider />
       <InputField
         text={duration}
         onChangeText={(text) => setDuration(parseInt(text))}
         question={"Charge Duration?"}
+        keyboardType='numeric'
       />
       <Divider />
       <InputField
@@ -67,25 +69,28 @@ export default function PreferenceScreen() {
         text={model}
         onChangeText={(text) => setModel(text)}
         question={"Model?"}
+        
       />
       <Divider />
       <InputField
         text={year}
         onChangeText={(text) => setYear(parseInt(text))}
         question={"Year?"}
+        keyboardType='numeric'
       />
       <Divider />
       <InputField
         text={mileage}
         onChangeText={(text) => setMileage(parseInt(text))}
         question={"Mileage?"}
+        keyboardType='numeric'
       />
       <Divider />
       <InputField
         text={battery}
-        // type='number'
         onChangeText={(text) => setBattery(parseInt(text))}
         question={"Battery Size?"}
+        keyboardType='numeric'
       />
       <CustomButton onPress={postData} buttonText="send" />
     </View>
