@@ -1,7 +1,7 @@
 # chargeTracker
 
 
-*Preamptive warning: Due to the absance of a Mac, this app has only been tested on Android Emulators.*
+*Preemptive warning: Due to the absence of a Mac, this app has only been tested on Android Emulators.*
 </br>
 
 **This app is a sample charging tracker app for users to see their charging session data, and update their charging preferences built using React Native Expo.**
