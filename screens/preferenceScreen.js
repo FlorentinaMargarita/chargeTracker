@@ -99,9 +99,6 @@ export default function PreferenceScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: "5%",
-    // marginLeft: "5%",
-
     margin: "8%",
   },
 });

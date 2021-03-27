@@ -78,8 +78,9 @@ export default function Chart({ data }) {
           <XAxis
             style={{
               marginHorizontal: -10,
-              lineHeight: 50,
+              // lineHeight: 25,
               height: '5%',
+              // backgroundColor: 'red'
             }}
             data={data.time}
             // xAccessor is a function that takes an index and returns the x value at that index
@@ -99,8 +100,8 @@ export default function Chart({ data }) {
             }}
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
-            contentInset={{ left: 60, right: 30 }}
-            svg={{ ...axesSvg, rotation: 50, y: 50 }}
+            contentInset={{ left: 30, right: 30 }}
+            svg={{ ...axesSvg, rotation: 50, y: 25 }}
           />
         </View>
       </View>
