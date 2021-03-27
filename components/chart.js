@@ -34,7 +34,7 @@ export default function Chart({ data }) {
 
   // if all the elements in the array are the same, I will display the specific date in the headline of the chart
   const equalDay = () => {
-    return 'Wednesday Jan 20th'
+    return 'Wed. Jan 20th'
     // for (i = 0; i < weekDay.length; ++i) {
     //   if (weekDay[i].join(" ") === weekDay[i + 1].join(" ")) {
     //     i++;
@@ -44,7 +44,7 @@ export default function Chart({ data }) {
 
   return (
     <View style={styles.container}>
-       <Text style={styles.headline}>This is data for {equalDay()}</Text>
+       <Text style={styles.headline}>Data for {equalDay()}</Text>
       <View style={{ height: "70%", paddingRight: 20, paddingLeft: 5, flexDirection: "row", marginBottom: 10 }}>
         <YAxis
           data={data.actual_energy_delivered.concat(
@@ -99,10 +99,13 @@ const styles = StyleSheet.create({
  container:{
    justifyContent: 'space-around',
    flexGrow: 1, 
+  //  alignItems: 'center',
  },
 
   headline: {
     fontSize: themeStyle.FONT_SIZE_TITLE,
     color: themeStyle.PRIMARY_COLOR,
+    textAlign: 'center',
+    justifyContent: 'center',
   },
 });
