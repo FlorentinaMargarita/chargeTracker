@@ -46,7 +46,7 @@ export default function App() {
         />
         <Stack.Screen
            options={{
-            title: "Update your preferences",
+            title: "Update Your Preferences",
             headerTintColor: themeStyle.PRIMARY_COLOR,
           }}
           name="PreferenceScreen"

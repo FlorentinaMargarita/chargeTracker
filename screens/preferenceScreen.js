@@ -6,8 +6,6 @@ import Divider from "../components/divider";
 import CustomButton from "../components/customButton";
 
 export default function PreferenceScreen() {
-  //maybe I could do it with drop down menue that would be easier for the database to handle.
-
   const [miles, setMiles] = useState();
   const [duration, setDuration] = useState();
   const [make, setMake] = useState();
@@ -16,38 +14,34 @@ export default function PreferenceScreen() {
   const [mileage, setMileage] = useState();
   const [battery, setBattery] = useState();
 
-
-
   const postData = () => {
     const body = {
-      "miles_needed": miles,
-      "charge_duration": duration,
-      "make": make,
-      "model": model,
-      "year": year,
-      "mileage": mileage,
-      "battery_size": battery,
+      miles_needed: miles,
+      charge_duration: duration,
+      make: make,
+      model: model,
+      year: year,
+      mileage: mileage,
+      battery_size: battery,
     };
     console.log("body", body);
     fetch("https://dev.powerflex.io/test-server/preferences", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        console.log(response.ok);
 
-    
-  }).then((response)=>{
-    console.log(response.ok)
-
-    
-  return response.text();
-  }
-  ).then((text)=>{
-    console.log(text, "text")
-  });
-};
+        return response.text();
+      })
+      .then((text) => {
+        console.log(text, "text");
+      });
+  };
 
   return (
     <View style={styles.container}>
@@ -58,31 +52,37 @@ export default function PreferenceScreen() {
       />
       <Divider />
       <InputField
-      text={duration}
+        text={duration}
         onChangeText={(text) => setDuration(parseInt(text))}
         question={"Charge Duration?"}
       />
       <Divider />
       <InputField
-      text={make}
-       onChangeText={(text) => setMake(text)} question={"Make?"} />
-      <Divider />
-      <InputField 
-      text={model}
-      onChangeText={(text) => setModel(text)} question={"Model?"} />
-      <Divider />
-      <InputField 
-      text={year}
-      onChangeText={(text) => setYear(parseInt(text))} question={"Year?"} />
+        text={make}
+        onChangeText={(text) => setMake(text)}
+        question={"Make?"}
+      />
       <Divider />
       <InputField
-      text={mileage}
+        text={model}
+        onChangeText={(text) => setModel(text)}
+        question={"Model?"}
+      />
+      <Divider />
+      <InputField
+        text={year}
+        onChangeText={(text) => setYear(parseInt(text))}
+        question={"Year?"}
+      />
+      <Divider />
+      <InputField
+        text={mileage}
         onChangeText={(text) => setMileage(parseInt(text))}
         question={"Mileage?"}
       />
       <Divider />
       <InputField
-      text={battery}
+        text={battery}
         onChangeText={(text) => setBattery(parseInt(text))}
         question={"Battery Size?"}
       />
@@ -93,10 +93,9 @@ export default function PreferenceScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    backgroundColor: "#fff",
-    // justifyContent: "space-around",
-    marginLeft: "5%",
-    marginRight: "5%",
+    // marginTop: "5%",
+    // marginLeft: "5%",
+
+    margin: "8%",
   },
 });

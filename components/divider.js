@@ -12,7 +12,7 @@ export default function Divider() {
 
 const styles = StyleSheet.create({
   divider: {
-    marginBottom: '1%',
+    marginBottom: 2,
     marginVertical: 1,
     borderBottomColor: themeStyle.PRIMARY_COLOR,
     borderBottomWidth: 5,

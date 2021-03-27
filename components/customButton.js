@@ -14,7 +14,7 @@ export default function CustomButton({ buttonText, onPress }) {
 
 const styles = StyleSheet.create({
   touchable: {
-    marginTop:'5%',
+    marginTop:'10%',
     borderRadius: 50,
     alignSelf: "center",
     width: "40%",
