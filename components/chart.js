@@ -63,7 +63,7 @@ export default function Chart({ data }) {
           svg={axesSvg}
           min={0}
         />
-        <View style={{ flex: 1, marginLeft: 10 }}>
+        <View style={{ flex: 1, marginLeft: 10,    marginBottom: '-10%', }}>
           <LineChart
             style={{ flex: 1, height: 50 }}
             data={chartData}
@@ -77,10 +77,11 @@ export default function Chart({ data }) {
           </LineChart>
           <XAxis
             style={{
-              marginHorizontal: -10,
+               marginHorizontal: -10,
+              // backgroundColor: 'red',
+               marginTop: '-10%',
               // lineHeight: 25,
-              height: '5%',
-              // backgroundColor: 'red'
+                height: '10%',
             }}
             data={data.time}
             // xAccessor is a function that takes an index and returns the x value at that index
@@ -101,7 +102,7 @@ export default function Chart({ data }) {
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
             contentInset={{ left: 30, right: 30 }}
-            svg={{ ...axesSvg, rotation: 50, y: 25 }}
+            svg={{ ...axesSvg, x:100, rotation: 20, y: 15, width: '100%' }}
           />
         </View>
       </View>
