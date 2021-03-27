@@ -138,6 +138,6 @@ const styles = StyleSheet.create({
     height: "60%",
     width: "95%",
     flexDirection: "row",
-    marginBottom: "10%",
+    // marginBottom: "10%",
   },
 });
