@@ -71,17 +71,15 @@ export default function Chart({ data }) {
             contentInset={verticalContentInset}
             renderGrid={Grid.Both}
             gridMin={0}
-            // numberOfTicks={5}
+            numberOfTicks={5}
           >
             <Grid direction={Grid.Direction.BOTH} />
           </LineChart>
           <XAxis
             style={{
-              marginHorizontal: -50,
+              marginHorizontal: -10,
               lineHeight: 50,
-              height: 10,
-              paddingLeft: 20,
-              backgroundColor: "red",
+              height: '5%',
             }}
             data={data.time}
             // xAccessor is a function that takes an index and returns the x value at that index
@@ -97,7 +95,7 @@ export default function Chart({ data }) {
               console.log(getJustTime, "value");
               //returns the data for the odd indexes. So only 10 instead of 20.
               if (index % 2) return getJustTime;
-              else return "abc";
+              else return "";
             }}
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
@@ -135,9 +133,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   chartView: {
-    height: "60%",
+    height: "70%",
     width: "95%",
     flexDirection: "row",
-    // marginBottom: "10%",
+    marginBottom:"10%",
   },
 });
