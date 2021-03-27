@@ -22,7 +22,7 @@ export default function App() {
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator>
         <Stack.Screen
-          screenOptions={{
+          options={{
             headerShown: false,
           }}
           name="LandingScreen"
