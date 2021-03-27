@@ -10,7 +10,7 @@
 
 The app has 4 different screens:
 </br>
-* The landing screens: This is the first screen the user sees after opening/launching the app. Here the user can chose whether to access the session data or the preference screen. Both of this paths are accessible via a button. 
+* The landing screens: This is the first screen the user sees after opening/launching the app. Here the user can chose whether to access the session data or the preference screen. Both of this paths are accessible via a button. Using the POST-method I am submitting the preferences of the user to the following API: https://dev.powerflex.io/test-server/preferences
 
 </br>
 
@@ -30,12 +30,14 @@ The app has 4 different screens:
 </br>
 
 * SessionScreen: The SessionScreen gets the id for the chosen session by SessionScreenOverview. Ther fetch API shows the appropriate data in the graph. A single graph plots all of the user’s session data of the chosen session. It retrieves the information about the particular session from the following API: https://dev.powerflex.io/test-server/sessions/${id}  In this screen I use the fetch API in conjunction with the GET-method to access the information. The data which is plotted on the graph is 
- </br>
+ 
         1.)	actual_energy_delivered
-        </br>
+      
         2.)	predictive_energy_delivered
-         </br>
+         
         3.)	time
+
+To display the chart I am using the library: react-native-svg-charts (https://github.com/JesperLekland/react-native-svg-charts) In order to be able to use it, another library has to be installed: react-native-svg (https://github.com/react-native-svg/react-native-svg). For the markers on the Y-axis I concatenated the data of predictive energy delivered with actual energy delivered. The line chart does then display these two data sets over time. The X-Axis shows the points in time, when the energy was delivered. For better readability I decided not to show every time point, but rather only every second point in time. 
 
 
 
