@@ -13,14 +13,8 @@ export default function SessionScreenOverview({ navigation }) {
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => alert(error))
-      .finally(setLoading(false));
+      .finally(()=> setLoading(false));
   }, []);
-
-  // const getIds = () => {
-  //   return fetch("https://dev.powerflex.io/test-server/sessions/")
-  //     .then((res) => res.json())
-  //     .then((x) => console.log(x));
-  // };
 
   return (
     <View style={styles.container}>

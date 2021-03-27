@@ -90,8 +90,8 @@ export default function Chart({ data }) {
       </View>
       <Text style={styles.captionExplainationX}>X-Axis: Points in Time {equalDay()}</Text>
       <Text style={styles.captionExplainationY}>Y-Axis: Energy delivered {equalDay()}</Text>
-      <Text style={styles.captionExplainationGreen}>Orange-Line: Actual Energy Delivered {equalDay()}</Text>
-      <Text style={styles.captionExplainationGreen}>Dark-Line: Predicted Energy {equalDay()}</Text>
+      <Text style={styles.captionExplainationGreen}>Orange-Line: Predicted Energy {equalDay()}</Text>
+      <Text style={styles.captionExplainationGreen}>Dark-Line: Actual Energy {equalDay()}</Text>
     </View>
   );
 }
