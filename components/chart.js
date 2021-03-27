@@ -63,7 +63,7 @@ export default function Chart({ data }) {
           svg={axesSvg}
           min={0}
         />
-        <View style={{ flex: 1, marginLeft: 10, marginBottom: "-10%" }}>
+        <View style={{ flex: 1, marginLeft: 10, marginBottom: "-15%" }}>
           <LineChart
             style={{ flex: 1, height: 50 }}
             data={chartData}
@@ -78,7 +78,7 @@ export default function Chart({ data }) {
           <XAxis
             style={{
               marginHorizontal: -10,
-              marginTop: "-5%",
+              // marginTop: 5,
               height: "10%",
             }}
             data={data.time}
@@ -100,11 +100,11 @@ export default function Chart({ data }) {
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
             contentInset={{ left: 30, right: 30 }}
-            svg={{ ...axesSvg, rotation: 20, y: 10 }}
+            svg={{ ...axesSvg, rotation: 25, y: 10 }}
           />
         </View>
       </View>
-      <View style={{ marginLeft: 15 }}>
+      <View style={{ marginLeft: 15, marginTop: 15 }}>
         <Text style={styles.captionExplainationX}>
           X-Axis: Points in Time {displayDay()}
         </Text>
