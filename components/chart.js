@@ -1,5 +1,5 @@
 import React from "react";
-import "react-native-svg";
+import {G} from "react-native-svg";
 import themeStyle from "../styles/theme.style";
 import { LineChart, Grid, YAxis, XAxis } from "react-native-svg-charts";
 import { View, Text, StyleSheet } from "react-native";
@@ -53,16 +53,22 @@ export default function Chart({ data }) {
           style={{}}
           contentInset={verticalContentInset}
           svg={axesSvg}
+          min={0}
         />
         <View style={{ flex: 1, marginLeft: 10 }}>
+          {/* <G> */}
           <LineChart
             style={{ flex: 1, height: 50 }}
             data={chartData}
             svg={{ stroke: colors.secondary }}
             contentInset={verticalContentInset}
+            renderGrid={ Grid.Both }
+            gridMin={0}
           >
-            <Grid />
+            <Grid direction={Grid.Direction.BOTH}/>
+            {/* renderGrid={ Grid.Both } */}
           </LineChart>
+          {/* </G> */}
           <XAxis
             style={{
               marginHorizontal: -10,
@@ -87,7 +93,7 @@ export default function Chart({ data }) {
             }}
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
-            contentInset={{ left: 10, right: 10 }}
+            // contentInset={{ left: 10, right: 10 }}
             svg={{ ...axesSvg, rotation: 50, y: 25 }}
           />
         </View>
@@ -112,9 +118,7 @@ export default function Chart({ data }) {
 const styles = StyleSheet.create({
   container: {
     justifyContent: "space-around",
-    // flexGrow: 1,
     paddingBottom: 5, 
-    //  alignItems: 'center',
   },
 
   headline: {
@@ -123,7 +127,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   chartView:{
-  height: "75%",
+  height: "70%",
   width: "95%",
   flexDirection: "row",
   marginBottom: 10,},

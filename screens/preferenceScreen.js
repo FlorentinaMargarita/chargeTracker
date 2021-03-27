@@ -83,6 +83,7 @@ export default function PreferenceScreen() {
       <Divider />
       <InputField
         text={battery}
+        // type='number'
         onChangeText={(text) => setBattery(parseInt(text))}
         question={"Battery Size?"}
       />
