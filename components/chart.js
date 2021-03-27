@@ -9,7 +9,7 @@ export default function Chart({ data }) {
   const { colors } = useTheme();
   const verticalContentInset = { top: 10, bottom: 10 };
 
-  const axesSvg = { fontSize: 12, fill: "grey" };
+  const axesSvg = { fontSize: 12, fill: "black" };
 
   const spacingInner = 1;
   const spacingOuter = 1;
@@ -34,18 +34,18 @@ export default function Chart({ data }) {
 
   // if all the elements in the array are the same, I will display the specific date in the headline of the chart
   const equalDay = () => {
-    return 'Wed. Jan 20th'
+    return "Wed. Jan 20th";
     // for (i = 0; i < weekDay.length; ++i) {
     //   if (weekDay[i].join(" ") === weekDay[i + 1].join(" ")) {
     //     i++;
-    //   } 
+    //   }
     // } return weekDay[0].join(" ");
   };
 
   return (
     <View style={styles.container}>
-       <Text style={styles.headline}>Data for {equalDay()}</Text>
-      <View style={{ height: "70%", paddingRight: 20, paddingLeft: 5, flexDirection: "row", marginBottom: 10 }}>
+      <Text style={styles.headline}>Data for {equalDay()}</Text>
+      <View        style={styles.chartView}      >
         <YAxis
           data={data.actual_energy_delivered.concat(
             data.predictive_energy_delivered
@@ -63,9 +63,13 @@ export default function Chart({ data }) {
           >
             <Grid />
           </LineChart>
-
           <XAxis
-            style={{ marginHorizontal: -10, lineHeight: 50, height: 40, paddingLeft: 20 }}
+            style={{
+              marginHorizontal: -10,
+              lineHeight: 50,
+              height: 40,
+              paddingLeft: 20,
+            }}
             data={data.time}
             // xAccessor is a function that takes an index and returns the x value at that index
             // index is an object.
@@ -77,35 +81,51 @@ export default function Chart({ data }) {
               const newDate = new Date(value * 1000).toLocaleString();
               const makeArray = newDate.split(" ");
               const getJustTime = makeArray[3];
-               //returns the data for the odd indexes. So only 10 instead of 20. 
-              if (index % 2) return getJustTime; 
+              //returns the data for the odd indexes. So only 10 instead of 20.
+              if (index % 2) return getJustTime;
               else return "";
             }}
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
             contentInset={{ left: 10, right: 10 }}
-            svg={{ ...axesSvg, rotation: 40, y: 25}}
+            svg={{ ...axesSvg, rotation: 50, y: 25 }}
           />
         </View>
       </View>
-      <Text style={styles.captionExplainationX}>X-Axis: Points in Time {equalDay()}</Text>
-      <Text style={styles.captionExplainationY}>Y-Axis: Energy delivered {equalDay()}</Text>
-      <Text style={styles.captionExplainationGreen}>Orange-Line: Predicted Energy {equalDay()}</Text>
-      <Text style={styles.captionExplainationGreen}>Dark-Line: Actual Energy {equalDay()}</Text>
+      <View style={{marginLeft: 15}} >
+      <Text style={styles.captionExplainationX}>
+        X-Axis: Points in Time {equalDay()}
+      </Text>
+      <Text style={styles.captionExplainationY}>
+        Y-Axis: Energy delivered {equalDay()}
+      </Text>
+      <Text style={styles.captionExplainationGreen}>
+        Orange-Line: Predicted Energy {equalDay()}
+      </Text>
+      <Text style={styles.captionExplainationGreen}>
+        Dark-Line: Actual Energy {equalDay()}
+      </Text>
+      </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
- container:{
-   justifyContent: 'space-around',
-   flexGrow: 1, 
-  //  alignItems: 'center',
- },
+  container: {
+    justifyContent: "space-around",
+    // flexGrow: 1,
+    paddingBottom: 5, 
+    //  alignItems: 'center',
+  },
 
   headline: {
     fontSize: themeStyle.FONT_SIZE_TITLE,
     color: themeStyle.PRIMARY_COLOR,
-    textAlign: 'center',
-    justifyContent: 'center',
+    textAlign: "center",
   },
+  chartView:{
+  height: "75%",
+  width: "95%",
+  flexDirection: "row",
+  marginBottom: 10,},
+  
 });

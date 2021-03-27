@@ -30,7 +30,7 @@ export default function App() {
         />
         <Stack.Screen
           options={{
-            title: "Session Overview",
+            title: "",
             headerTintColor: themeStyle.PRIMARY_COLOR,
           }}
           name="SessionScreenOverview"

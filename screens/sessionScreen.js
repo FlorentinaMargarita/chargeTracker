@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Chart from "../components/chart";
 import "react-native-svg";
-import themeStyle from "../styles/theme.style";
 
 export default function SessionScreen({route}) {
   const [isLoading, setLoading] = useState(true);

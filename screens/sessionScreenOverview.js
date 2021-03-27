@@ -24,6 +24,7 @@ export default function SessionScreenOverview({ navigation }) {
             color: themeStyle.FONT_WEIGHT_HEAVY,
             fontSize: themeStyle.FONT_SIZE_TITLE,
             color: themeStyle.PRIMARY_COLOR,
+            marginBottom: 30,
           }}
         >
           Choose a Session
