@@ -11,6 +11,7 @@
 The app has 4 different screens:
 </br>
 * The landing screens: This is the first screen the user sees after opening/launching the app. Here the user can chose whether to access the session data or the preference screen. Both of this paths are accessible via a button. Using the POST-method I am submitting the preferences of the user to the following API: https://dev.powerflex.io/test-server/preferences
+![](images/preferenceScreen.PNG)
 
 </br>
 
