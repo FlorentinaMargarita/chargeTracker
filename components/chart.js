@@ -58,12 +58,12 @@ export default function Chart({ data }) {
           data={data.actual_energy_delivered.concat(
             data.predictive_energy_delivered
           )}
-          style={{}}
+          style={{ width: "5%" }}
           contentInset={verticalContentInset}
           svg={axesSvg}
           min={0}
         />
-        <View style={{ flex: 1, marginLeft: 10,    marginBottom: '-10%', }}>
+        <View style={{ flex: 1, marginLeft: 10, marginBottom: "-10%" }}>
           <LineChart
             style={{ flex: 1, height: 50 }}
             data={chartData}
@@ -77,11 +77,9 @@ export default function Chart({ data }) {
           </LineChart>
           <XAxis
             style={{
-               marginHorizontal: -10,
-              // backgroundColor: 'red',
-               marginTop: '-10%',
-              // lineHeight: 25,
-                height: '10%',
+              marginHorizontal: -10,
+              marginTop: "-5%",
+              height: "10%",
             }}
             data={data.time}
             // xAccessor is a function that takes an index and returns the x value at that index
@@ -102,7 +100,7 @@ export default function Chart({ data }) {
             spacingInner={spacingInner}
             spacingOuter={spacingOuter}
             contentInset={{ left: 30, right: 30 }}
-            svg={{ ...axesSvg, x:100, rotation: 20, y: 15, width: '100%' }}
+            svg={{ ...axesSvg, rotation: 20, y: 10 }}
           />
         </View>
       </View>
@@ -138,6 +136,6 @@ const styles = StyleSheet.create({
     height: "70%",
     width: "95%",
     flexDirection: "row",
-    marginBottom:"10%",
+    marginBottom: "10%",
   },
 });
