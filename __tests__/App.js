@@ -8,3 +8,7 @@ import renderer from 'react-test-renderer';
 it('renders correctly', () => {
   renderer.create(<App />);
 });
+
+
+// test if it finds the search button
+// test if something is fired to the API
